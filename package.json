@@ -1,0 +1,9 @@
+{
+	"name": "electronLand",
+	"version": "0.4.0",
+	"main": "main.js",
+	"dependencies" : {
+		"request": "*",
+		"daveutils": "*"
+		} 
+	}
