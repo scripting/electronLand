@@ -7,7 +7,7 @@ var myConfig = {
 	description: "Just a demo app.",
 	userDataFolder: undefined,
 	appDirname: __dirname, 
-	version: "0.41d"
+	version: "0.41x"
 	}
 
 function startup () {

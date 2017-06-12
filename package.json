@@ -5,5 +5,9 @@
 	"dependencies" : {
 		"request": "*",
 		"daveutils": "*"
-		} 
+		}, 
+	"scripts": {
+		"package-mac": "sudo electron-packager . \"Electric Outliner\" --platform=darwin --arch=all --electron-version=0.37.5 --overwrite --icon=outliner.icns",
+		"package-linux": "sudo electron-packager . \"Electric Outliner\" --platform=linux --arch=x64 --electron-version=0.37.5 --overwrite --prune --icon=outliner.png"
+		}
 	}

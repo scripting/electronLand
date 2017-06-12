@@ -16,5 +16,9 @@
 			<outline text="&lt;%prefs.checkboxPref (&quot;Month-based&quot;, &quot;flPlusIconMonthBased&quot;)%&gt;"></outline>
 			<outline text="&lt;%prefs.stringPref (&quot;Type&quot;, &quot;typeInsertedNode&quot;, &quot;The type attribute for newly created notes.&quot;)%&gt;"></outline>
 			</outline>
+		<outline created="Sat, 15 Jun 2013 22:00:35 GMT" pgfnum="26413" text="Tweets">
+			<outline text="&lt;%prefs.checkboxPref (&quot;Confirm tweets before sending.&quot;, &quot;flConfirmTweets&quot;)%&gt;"></outline>
+			<outline text="&lt;%prefs.checkboxPref (&quot;Automatically check for replies.&quot;, &quot;flCheckForReplies&quot;)%&gt;"></outline>
+			</outline>
 		</body>
 	</opml>

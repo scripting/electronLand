@@ -5,5 +5,5 @@
 	"urlTwitterServer": "http://storage.littleoutliner.com/",
 	"urlChatLogSocket": "ws://storage.littleoutliner.com:1242/",
 	"outlinesPath": "electric/",
-	"version": "0.41e"
+	"version": "0.43a"
 	}
