@@ -1,288 +1,0 @@
-<html>
-	<head>
-		<title id="idPageTitle">Hello Outliner!</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="http://fargo.io/code/jquery-1.9.1.min.js"></script><link href="http://fargo.io/code/bootstrap.css" rel="stylesheet"><script src="http://fargo.io/code/bootstrap.min.js"></script><link rel="stylesheet" href="http://fargo.io/code/fontAwesome/css/font-awesome.min.css"/><link href="http://fargo.io/code/ubuntuFont.css" rel="stylesheet" type="text/css"><link href="http://fargo.io/code/ranchoFont.css" rel="stylesheet" type="text/css"><script src="http://fargo.io/code/node/shared/utils.js"></script><script src="http://fargo.io/code/node/shared/alertdialog.js"></script><script src="http://fargo.io/code/node/shared/confirmdialog.js"></script><script src="http://fargo.io/code/node/shared/askdialog.js"></script><script src="http://fargo.io/code/strftime.js"></script><script src="http://fargo.io/code/shared/ga.js"></script><script src="http://fargo.io/code/shared/app.js"></script><script src="http://fargo.io/code/shared/menus.js"></script><link href="http://fargo.io/code/shared/menus.css" rel="stylesheet" type="text/css"><link href="http://fargo.io/code/shared/app.css" rel="stylesheet" type="text/css"><script src="http://fargo.io/code/shared/appprefs.js?x=2"></script><script src="http://fargo.io/code/shared/jBeep.min.js"></script><script src="http://fargo.io/code/shared/beep.js"></script>
-		
-		<script src="http://fargo.io/code/storage/api.js"></script>
-		
-		<script src="http://fargo.io/code/concord.js"></script>
-		<script src="http://fargo.io/code/concordKeyboard.js" /></script>
-		<script src="http://fargo.io/code/shared/outliner.js?x=1"></script>
-		<script src="http://fargo.io/code/shared/twoutliner.js?x=1"></script>
-		<script src="http://fargo.io/code/shared/xml.js?x=0"></script>
-		<script src="http://fargo.io/code/shared/arrowpad.js"></script>
-		<script src="http://fargo.io/code/shared/tableeditor.js"></script>
-		<link rel="stylesheet" href="http://fargo.io/code/shared/tableeditor.css"/>
-		<script src="http://fargo.io/code/shared/buildrss.js"></script> 
-		
-		<script src="outlinerhomepage.js?x=3"></script>
-		<link rel="stylesheet" href="outlinerstyles.css"/>
-		<link href="lib/electronshell.css" rel="stylesheet" type="text/css">
-		</head>
-	<body>
-		<div class="divMenubar" id="idMenubar">
-			<div class="topbar-wrapper" style="z-index: 5;">
-				<div class="navbar navbar-fixed-top" data-dropdown="dropdown">
-					<div class="divVersionNumber">
-						<span id="idVersionNumber"></span>
-						</div>
-					<div class="navbar-inner">
-						<div class="container">
-							<a class="brand" href="/"><span id="idMenuProductName"></span></a>
-							<ul class="nav" id="idMainMenuList">
-								<li class="dropdown" id="idFileMenu"> 
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">File&nbsp;<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a onclick="newFileCommand ();">New file...</a></li>
-										<li><a onclick="openFileCommand ();">Open file...</a></li>
-										<li class="divider"></li>
-										<li><a onclick="closeTabCommand ();">Close</a></li>
-										<li class="divider"></li>
-										<li><a onclick="viewOutlineOpml ();">View OPML...</a></li>
-										<li class="divider"></li>
-										<li><a onclick="titleDescriptionDialog ();">Set title & description...</a></li>
-										<li><a onclick="editOpmlHeaders ();">Edit OPML headers...</a></li>
-										<li class="divider"></li>
-										<li><a onclick="runCursorScript ();"><span class="menuKeystroke">Cmd-/</span>Run Selection</a></li>
-										<li class="divider"></li>
-										<li><a onclick="makeOutlinePublic ();">Make outline public...</a></li>
-										<li><a onclick="subscribeToInstantOutlineCommand ();">Subscribe to outline...</a></li>
-										<li class="divider"></li>
-										<li class="dropdown-submenu">
-											<a href="#" tabindex="-1">Special files...</a>
-												<ul class="dropdown-menu">
-													<li><a href="#" tabindex="-1" onclick="openMenubarOpml ()">Menubar...</a></li>
-													<li><a href="#" tabindex="-1" onclick="openIconbarOpml ()">Iconbar...</a></li>
-													<li><a href="#" tabindex="-1" onclick="openBookmarksOpml ()">Bookmarks...</a></li>
-												</ul>
-											</li>
-										<li class="divider"></li>
-										<li><a onclick="shell.openUserDataFolder ();">Open data folder</a></li>
-										</ul>
-									</li>
-								<li class="dropdown" id="idOutlinerMenu"> 
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Outliner&nbsp;<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a onclick="opExpand ();">Expand</a></li>
-										<li><a onclick="opExpandAllLevels ();">Expand All Subs</a></li>
-										<li><a onclick="opExpandEverything ();">Expand Everything</a></li>
-										
-										<li class="divider"></li>
-										<li><a onclick="opCollapse ();">Collapse</a></li>
-										<li><a onclick="opCollapseEverything ();">Collapse Everything</a></li>
-										
-										<li class="divider"></li>
-										<li><a onclick="opDeleteLine ();">Delete Line</a></li>
-										
-										<li class="divider"></li>
-										<li class="dropdown-submenu">
-											<a href="#" tabindex="-1">Build...</a>
-												<ul class="dropdown-menu">
-													<li><a href="#" tabindex="-1" onclick="buildListicle ()">Listicle</a></li>
-													<li><a href="#" tabindex="-1" onclick="buildStatusCenter ()">Status Center</a></li>
-												</ul>
-											</li>
-										
-										<li class="divider"></li>
-										<li><a onclick="opFindCommand ();"><span class="menuKeystroke">Cmd-F</span>Find...</a></li>
-										<li><a onclick="opFindAgainCommand ();"><span class="menuKeystroke">Cmd-G</span>Find again</a></li>
-										
-										<li class="divider"></li>
-										<li><a onclick="toggleRenderMode ();"><span class="menuKeystroke">Cmd-`</span><span id="idRenderModeCommandString"></span></a></li>
-										</ul>
-									</li>
-								<li class="dropdown" id="idReorgMenu"> 
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reorg&nbsp;<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a onclick="opReorg (up, 1);"><span class="menuKeystroke">Cmd-U</span>Move Up</a></li>
-										<li><a onclick="opReorg (down, 1);"><span class="menuKeystroke">Cmd-D</span>Move Down</a></li>
-										<li><a onclick="opReorg (left, 1);"><span class="menuKeystroke">Cmd-L</span>Move Left</a></li>
-										<li><a onclick="opReorg (right, 1);"><span class="menuKeystroke">Cmd-R</span>Move Right</a></li>
-										
-										<li class="divider"></li>
-										<li><a onclick="toggleArrowPad ();"><span id="idArrowPadCommandString"></span></a></li>
-										
-										<li class="divider"></li>
-										<li><a onclick="opToggleComment ();"><span class="menuKeystroke">Cmd-\</span>Comment</a></a></li>
-										
-										<li class="divider"></li>
-										<li><a onclick="opPromote ();"><span class="menuKeystroke">Cmd-[</span>Promote</a></li>
-										<li><a onclick="opDemote ();"><span class="menuKeystroke">Cmd-]</span>Demote</a></li>
-										
-										<li class="divider"></li>
-										<li><a onclick="toggleRenderMode ();"><span class="menuKeystroke">Cmd-`</span><span id="idRenderModeCommandString"></span></a></li>
-										</ul>
-									</li>
-								<li class="dropdown" id="idDocsMenu"> 
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Docs&nbsp;<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li>TBD</li>
-										</ul>
-									</li>
-								<li class="dropdown desktopOnly" id="idBookmarksMenu" style="display: none;"> 
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bookmarks&nbsp;<b class="caret"></b></a>
-									<ul class="dropdown-menu" id="idBookmarksList">
-										</ul>
-									</li>
-								</ul>
-							<ul class="nav pull-right">
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="idTwitterIcon"></span><span id="idTwitterUsername"></span>&nbsp;<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a onclick="aboutDialog ();">About <span id="idMenuAboutProductName"></span>...</a></li>
-										<li class="divider"></li>
-										<li><a onclick="openSettingsDialog ();">Settings...</a></li>
-										<li class="divider"></li>
-										<li><a onclick="toggleTwitterConnect ();" id="idTwitterConnectMenuItem"></a></li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		<div class="divSettingsDialog">
-			<div id="idSettingsDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
-				<div class="modal-body">
-					<div class="divDialogElements">
-						<form method="POST">
-	<div class="divTabsFromOutline">
-	<div class="tabbable">
-		<ul class="nav nav-tabs" data-tabs="tabs">
-			<li class="active" ><a href="#idNotes889"  data-toggle="tab">Notes</a></li>
-			<li><a href="#idTweets889"  data-toggle="tab">Tweets</a></li>
-			</ul>
-		<div id="my-tab-content" class="tab-content">
-			<div class="active tab-pane" id="idNotes889">
-				<fieldset>
-					<div class="divPrefs">	<div class="clearfix">	<label for="flOneNotePerDay"></label>	<div class="input">		<input type="checkbox" name="flOneNotePerDay" value=xxx>&nbsp;One note per day		</div>	</div><div class="clearfix">	<label for="flPlusIconMonthBased"></label>	<div class="input">		<input type="checkbox" name="flPlusIconMonthBased" value=xxx>&nbsp;Month-based		</div>	</div><div class="clearfix">	<label for="typeInsertedNode">Type:</label>	<div class="input">		<input class="xlarge prefsInput" id="typeInsertedNode" name="typeInsertedNode" size="50" type="text" value="" placeholder="The type attribute for newly created notes." />		</div>	</div>	</div>
-					</fieldset>
-						</div>
-					<div class="tab-pane" id="idTweets889">
-						<fieldset>
-							<div class="divPrefs">	<div class="clearfix">	<label for="flConfirmTweets"></label>	<div class="input">		<input type="checkbox" name="flConfirmTweets" value=xxx>&nbsp;Confirm tweets before sending.		</div>	</div><div class="clearfix">	<label for="flCheckForReplies"></label>	<div class="input">		<input type="checkbox" name="flCheckForReplies" value=xxx>&nbsp;Automatically check for replies.		</div>	</div>	</div>
-							</fieldset>
-								</div>
-							</div>
-						</div>
-					</div>
-
-	</form>
- 
-						</div>
-					</div>
-				<div class="modal-footer">
-					<a href="#" class="btn" onclick="shell.closeSettingsDialog ();">Cancel</a>
-					<a href="#" class="btn btn-primary" onclick="shell.okSettingsDialog ();">OK</a>
-					</div>
-				</div>
-			</div>
-		<div class="divTitleDescriptionDialog">
-			<div id="idTitleDescriptionDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
-				<div class="modal-header">
-					<a href="#" class="close" data-dismiss="modal">&times;</a>
-					<h3>Set titles and description...</h3>
-					</div>
-				<div class="modal-body">
-					<div class="divDialogElements">
-						<fieldset>
-							<div class="divPrefs">
-								<div class="clearfix">
-									<label for="shortTitle">Short title:</label>
-									<div class="input">
-										<input class="xlarge prefsInput" id="idShortTitle" name="shortTitle" size="50" type="text" value="" placeholder="The title that's displayed in the tab when the file is open.">
-										</div>
-									</div>
-								<div class="clearfix">
-									<label for="longTitle">Long title:</label>
-									<div class="input">
-										<input class="xlarge prefsInput" id="idLongTitle" name="longTitle" size="50" type="text" value="" placeholder="The title that's displayed in Reader.">
-										</div>
-									</div>
-								<div class="clearfix">
-									<label for="description">Description:</label>
-									<div class="input">
-										<textarea class="xxlarge" id="idDescription" name="description" cols="70" rows="4" placeholder="How the file is described when shown in Reader."></textarea>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-				<div class="modal-footer">
-					<a href="#" class="btn" onclick="closeTitleDescriptionDialog ();">Cancel</a>
-					<a href="#" class="btn btn-primary" onclick="okTitleDescriptionDialog ();">OK</a>
-					</div>
-				</div>
-			</div>
-		<div class="divPageBody" id="idPageBody">
-			<div class="divStatusMessage" id="idStatusMessageContainer">
-				<div class="alert alert-info">
-					<span id="idStatusMessage" />
-					</div>
-				</div>
-			<div id="idTabsContainer">
-				<div class="divTable">
-					<div class="divIconContainer">
-						<div class="divIconBar" id="idIconBar">
-							<div style="position: fixed !important" id="idIconList">
-								<div class="divIcon">
-									<a href="#" onclick="opNewPost ();" data-toggle="tooltip" title="New note.">
-										<i class="fa fa-plus iIcon" id="idPostIcon"></i>
-										</a>
-									</div>
-								<div class="divIcon">
-									<a href="#" onclick="linkIconClick ();" data-toggle="tooltip" title="Link to another page.">
-										<i class="fa fa-link iIcon" id="idLinkIcon"></i>
-										</a>
-									</div>
-								<div class="divIcon">
-									<a href="#" onclick="editAttributes ();" data-toggle="tooltip" title="Edit attributes.">
-										<i class="fa fa-suitcase iIcon" id="idEditAttsIcon"></i>
-										</a>
-									</div>
-								<div class="divIcon">
-									<a href="#" onclick="tweetThisIconClick ();" data-toggle="tooltip" title="Tweet the text of the cursor headline.">
-										<i class="fa fa-twitter iIcon" id="idTweetThisIcon"></i>
-										</a>
-									</div>
-								<div class="divIcon" id="idIconToInsertAfter">
-									<a href="#" onclick="shell.lockIconClick ();" data-toggle="tooltip" title="Lock or unlock the current outline display.">
-										<i class="fa fa-lock iIcon" id="idLockIcon"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					<div class="divMyTabs" id="idTabs">
-						<div class="divSaveStatus" id="idSaveStatus">
-							<div class="alert alert-info">
-								<span id="idStatusMessage" />
-								</div>
-							</div>
-						<ul id="idTabList" class="nav nav-tabs">
-							</ul>
-						<div class="divTabDisplay" id="idTabDisplay">
-							<div class="divEditorContainer" id="idEditorContainer">
-								</div>
-							</div>
-						</div>
-					</div>
-				<div class="divStatusBelowTabs">
-					<div class="divAttributesDisplay" id="idAttributesDisplay">
-						</div>
-					<div class="divFilepath" id="idFilepath">
-						</div>
-					</div>
-				</div>
-			</div>
-		<script>
-			$(document).ready (function () {
-				startup ();
-				});
-			</script>
-		</body>
-	</html>

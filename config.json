@@ -1,9 +1,0 @@
-{
-	"productname": "electricOutliner",
-	"productnameForDisplay": "Electric Outliner",
-	"description": "The Concord outliner in an Electron shell.",
-	"urlTwitterServer": "http://storage.littleoutliner.com/",
-	"urlChatLogSocket": "ws://storage.littleoutliner.com:1242/",
-	"outlinesPath": "electric/",
-	"version": "0.43a"
-	}

@@ -1,13 +1,21 @@
 {
-	"name": "electronLand",
+	"name": "electronland",
+	"description": "Glue that connects JavaScript apps to the davecast server.",
 	"version": "0.4.0",
-	"main": "main.js",
+	"author": "Dave Winer <dave@smallpicture.com>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/scripting/electronland.git"
+		},
+	"main": "electronland.js",
+	"files": [
+		"lib/electronmain.js", 
+		"lib/electronshell.js",
+		"lib/electronshell.css"
+		],
 	"dependencies" : {
 		"request": "*",
 		"daveutils": "*"
-		}, 
-	"scripts": {
-		"package-mac": "sudo electron-packager . \"Electric Outliner\" --platform=darwin --arch=all --electron-version=0.37.5 --overwrite --icon=outliner.icns",
-		"package-linux": "sudo electron-packager . \"Electric Outliner\" --platform=linux --arch=x64 --electron-version=0.37.5 --overwrite --prune --icon=outliner.png"
 		}
 	}
