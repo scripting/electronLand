@@ -17,7 +17,7 @@ function everySecond () {
 function startup () {
 	var options = {
 		};
-	shell.init (options, function (appPrefsFromStorage) {
+	shell.init (options, function () {
 		initTwitterMenuItems ();
 		self.setInterval (everySecond, 1000); 
 		if (twIsTwitterConnected ()) {
