@@ -18,8 +18,6 @@ function startup () {
 	var options = {
 		};
 	shell.init (options, function () {
-		initTwitterMenuItems ();
-		self.setInterval (everySecond, 1000); 
 		if (twIsTwitterConnected ()) {
 			twGetUserInfo (twGetScreenName (), function (userinfo) {
 				console.log ("startup: userinfo == " + jsonStringify (userinfo));
@@ -27,5 +25,6 @@ function startup () {
 				showHelloWorldMessage ();
 				});
 			}
+		self.setInterval (everySecond, 1000); 
 		});
 	}
