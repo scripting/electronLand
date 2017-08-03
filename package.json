@@ -1,7 +1,7 @@
 {
 	"name": "electronland",
-	"description": "Glue that connects JavaScript apps to the davecast server.",
-	"version": "0.4.0",
+	"description": "My container for Electron apps that use nodeStorage for identity.",
+	"version": "0.4.9",
 	"author": "Dave Winer <dave@smallpicture.com>",
 	"license": "MIT",
 	"repository": {
