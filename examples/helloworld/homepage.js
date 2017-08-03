@@ -1,10 +1,18 @@
 const shell = require ("electronland").shell; 
 
-function toggleTwitterConnect () {
-	shell.toggleTwitterConnect ()
+function showHelloWorldMessage () {
+	if (twIsTwitterConnected ()) {
+		$("#idLoggedonMessage").css ("display", "block");
+		$("#idNotLoggedonMessage").css ("display", "none");
+		}
+	else {
+		$("#idLoggedonMessage").css ("display", "none");
+		$("#idNotLoggedonMessage").css ("display", "block");
+		}
 	}
 function everySecond () {
 	initTwitterMenuItems ();
+	showHelloWorldMessage ();
 	}
 function startup () {
 	var options = {
@@ -14,6 +22,8 @@ function startup () {
 		if (twIsTwitterConnected ()) {
 			twGetUserInfo (twGetScreenName (), function (userinfo) {
 				twUserInfo = userinfo;
+				$("#idUserName").text (userinfo.name);
+				showHelloWorldMessage ();
 				console.log ("startup: twUserInfo == " + jsonStringify (twUserInfo));
 				twGetTwitterConfig (function () { 
 					everySecond (); //don't wait for the next second, call immediately
