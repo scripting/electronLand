@@ -1,0 +1,155 @@
+<html>
+	<head>
+		<title>Hello electronLand</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="http://fargo.io/code/jquery-1.9.1.min.js"></script><link href="http://fargo.io/code/bootstrap.css" rel="stylesheet"><script src="http://fargo.io/code/bootstrap.min.js"></script><link rel="stylesheet" href="http://fargo.io/code/fontAwesome/css/font-awesome.min.css"/><link href="http://fargo.io/code/ubuntuFont.css" rel="stylesheet" type="text/css"><link href="http://fargo.io/code/ranchoFont.css" rel="stylesheet" type="text/css"><script src="http://fargo.io/code/node/shared/utils.js"></script><script src="http://fargo.io/code/node/shared/alertdialog.js"></script><script src="http://fargo.io/code/node/shared/confirmdialog.js"></script><script src="http://fargo.io/code/node/shared/askdialog.js"></script><script src="http://fargo.io/code/strftime.js"></script><script src="http://fargo.io/code/shared/ga.js"></script><script src="http://fargo.io/code/shared/app.js"></script><script src="http://fargo.io/code/shared/menus.js"></script><link href="http://fargo.io/code/shared/menus.css" rel="stylesheet" type="text/css"><link href="http://fargo.io/code/shared/app.css" rel="stylesheet" type="text/css"><script src="http://fargo.io/code/shared/appprefs.js?x=2"></script><script src="http://fargo.io/code/shared/jBeep.min.js"></script><script src="http://fargo.io/code/shared/beep.js"></script>
+		<script src="http://fargo.io/code/storage/api.js"></script>
+		<script src="homepage.js"></script>
+		<style>
+			body {
+				font-family: Ubuntu;
+				font-size: 18px;
+				background-color: whitesmoke;
+				}
+			.divPageBody {
+				width: 60%;
+				margin-top: 90px;
+				margin-left: auto;
+				margin-right: auto;
+				}
+			</style>
+		</head>
+	<body>
+		<div class="divMenubar" id="idMenubar">
+			<div class="topbar-wrapper" style="z-index: 5;">
+				<div class="navbar navbar-fixed-top" data-dropdown="dropdown">
+					<div class="divVersionNumber">
+						<span id="idVersionNumber"></span>
+						</div>
+					<div class="navbar-inner">
+						<div class="container">
+							<a class="brand" href="/"><span id="idMenuProductName"></span></a>
+							<ul class="nav" id="idMainMenuList">
+								<li class="dropdown" id="idFileMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">File&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="newFileCommand ();">New file...</a></li>
+										<li><a onclick="openFileCommand ();">Open file...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="closeTabCommand ();">Close</a></li>
+										<li class="divider"></li>
+										<li><a onclick="viewOutlineOpml ();">View OPML...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="titleDescriptionDialog ();">Set title & description...</a></li>
+										<li><a onclick="editOpmlHeaders ();">Edit OPML headers...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="runCursorScript ();"><span class="menuKeystroke">Cmd-/</span>Run Selection</a></li>
+										<li class="divider"></li>
+										<li><a onclick="makeOutlinePublic ();">Make outline public...</a></li>
+										<li><a onclick="subscribeToInstantOutlineCommand ();">Subscribe to outline...</a></li>
+										<li class="divider"></li>
+										<li class="dropdown-submenu">
+											<a href="#" tabindex="-1">Special files...</a>
+												<ul class="dropdown-menu">
+													<li><a href="#" tabindex="-1" onclick="openMenubarOpml ()">Menubar...</a></li>
+													<li><a href="#" tabindex="-1" onclick="openIconbarOpml ()">Iconbar...</a></li>
+													<li><a href="#" tabindex="-1" onclick="openBookmarksOpml ()">Bookmarks...</a></li>
+												</ul>
+											</li>
+										<li class="divider"></li>
+										<li><a onclick="shell.openUserDataFolder ();">Open data folder</a></li>
+										</ul>
+									</li>
+								<li class="dropdown" id="idOutlinerMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Outliner&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="opExpand ();">Expand</a></li>
+										<li><a onclick="opExpandAllLevels ();">Expand All Subs</a></li>
+										<li><a onclick="opExpandEverything ();">Expand Everything</a></li>
+										
+										<li class="divider"></li>
+										<li><a onclick="opCollapse ();">Collapse</a></li>
+										<li><a onclick="opCollapseEverything ();">Collapse Everything</a></li>
+										
+										<li class="divider"></li>
+										<li><a onclick="opDeleteLine ();">Delete Line</a></li>
+										
+										<li class="divider"></li>
+										<li class="dropdown-submenu">
+											<a href="#" tabindex="-1">Build...</a>
+												<ul class="dropdown-menu">
+													<li><a href="#" tabindex="-1" onclick="buildListicle ()">Listicle</a></li>
+													<li><a href="#" tabindex="-1" onclick="buildStatusCenter ()">Status Center</a></li>
+												</ul>
+											</li>
+										
+										<li class="divider"></li>
+										<li><a onclick="opFindCommand ();"><span class="menuKeystroke">Cmd-F</span>Find...</a></li>
+										<li><a onclick="opFindAgainCommand ();"><span class="menuKeystroke">Cmd-G</span>Find again</a></li>
+										
+										<li class="divider"></li>
+										<li><a onclick="toggleRenderMode ();"><span class="menuKeystroke">Cmd-`</span><span id="idRenderModeCommandString"></span></a></li>
+										</ul>
+									</li>
+								<li class="dropdown" id="idReorgMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reorg&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="opReorg (up, 1);"><span class="menuKeystroke">Cmd-U</span>Move Up</a></li>
+										<li><a onclick="opReorg (down, 1);"><span class="menuKeystroke">Cmd-D</span>Move Down</a></li>
+										<li><a onclick="opReorg (left, 1);"><span class="menuKeystroke">Cmd-L</span>Move Left</a></li>
+										<li><a onclick="opReorg (right, 1);"><span class="menuKeystroke">Cmd-R</span>Move Right</a></li>
+										
+										<li class="divider"></li>
+										<li><a onclick="toggleArrowPad ();"><span id="idArrowPadCommandString"></span></a></li>
+										
+										<li class="divider"></li>
+										<li><a onclick="opToggleComment ();"><span class="menuKeystroke">Cmd-\</span>Comment</a></a></li>
+										
+										<li class="divider"></li>
+										<li><a onclick="opPromote ();"><span class="menuKeystroke">Cmd-[</span>Promote</a></li>
+										<li><a onclick="opDemote ();"><span class="menuKeystroke">Cmd-]</span>Demote</a></li>
+										
+										<li class="divider"></li>
+										<li><a onclick="toggleRenderMode ();"><span class="menuKeystroke">Cmd-`</span><span id="idRenderModeCommandString"></span></a></li>
+										</ul>
+									</li>
+								<li class="dropdown" id="idDocsMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Docs&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>TBD</li>
+										</ul>
+									</li>
+								<li class="dropdown desktopOnly" id="idBookmarksMenu" style="display: none;"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bookmarks&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu" id="idBookmarksList">
+										</ul>
+									</li>
+								</ul>
+							<ul class="nav pull-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="idTwitterIcon"></span><span id="idTwitterUsername"></span>&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="aboutDialog ();">About <span id="idMenuAboutProductName"></span>...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="openSettingsDialog ();">Settings...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="toggleTwitterConnect ();" id="idTwitterConnectMenuItem"></a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="divPageBody">
+			<h1>Hello electronLand</h1>
+			</div>
+		<script>
+			$(document).ready (function () {
+				startup ();
+				});
+			</script>
+		</body>
+	</html>
