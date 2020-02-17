@@ -8,6 +8,10 @@ More docs forthcoming.
 
 8/3/17 by DW
 
+### Update 2/16/20 by DW
+
+Export shell.buildTabs so we can change the title of a tab from above. 
+
 ### Update 1/31/20; by DW
 
 Fixed <a href="https://www.electronjs.org/releases/stable?version=6&page=5#release-notes-for-600">breakage</a> in shellNewFileDialog, shellChooseFolderDialog, shellOpenFileDialog.
