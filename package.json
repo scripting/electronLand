@@ -1,8 +1,8 @@
 {
 	"name": "electronland",
 	"description": "My container for Electron apps that use nodeStorage and Twitter for identity.",
-	"version": "0.4.43",
-	"author": "Dave Winer <dave@smallpicture.com>",
+	"version": "0.5.2",
+	"author": "Dave Winer <dave@scripting.com>",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -12,7 +12,8 @@
 	"files": [
 		"lib/electronmain.js", 
 		"lib/electronshell.js",
-		"lib/electronshell.css"
+		"lib/electronshell.css",
+		"worknotes.md"
 		],
 	"dependencies" : {
 		"request": "*",
