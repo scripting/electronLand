@@ -1,3 +1,11 @@
+#### 7/29/23 by DW
+
+Let the user specify the location of the userDataFolder for all upper-level code.
+
+I want this so I can put the folder in Dropbox so it can be shared between systems.
+
+Search for checkForRelocatedUserConfigFile.
+
 #### 8/27/22 by DW
 
 Added config.flPreventHardwareAcceleration per Scott Hanson's <a href="https://github.com/scripting/electronLand/issues/3#issue-1352977828">request</a>. 

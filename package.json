@@ -1,7 +1,7 @@
 {
 	"name": "electronland",
 	"description": "My container for Electron apps that use nodeStorage and Twitter for identity.",
-	"version": "0.5.5",
+	"version": "0.5.6",
 	"author": "Dave Winer <dave@scripting.com>",
 	"license": "MIT",
 	"repository": {
